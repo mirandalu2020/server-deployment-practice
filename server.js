@@ -15,7 +15,6 @@ app.use(cors());
 app.get('/capitalize-me', function(request, response, next) {
   // I want to send a message as a query parameter??
   if (request.query.message) {
-    // I want that message returned in the response as all caps.
     let upperMessage = capitalize(request.query.message);
     response.send(upperMessage);
   } else {
@@ -30,6 +29,9 @@ app.get('/state', function(request, response, next) {
 
 app.post('/state', function(request, response, next) {
   let updated = updateState('off')
+  if (request.query.state){
+    updated=updateState(request.query.state)
+  }
   response.send(updated);
 });
 

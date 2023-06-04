@@ -2,6 +2,8 @@
 
 const express = require('express');
 const capitalize = require('./capitalize/capitilize');
+const getState=require('./readS3/getState')
+const {updateState}=require('./updateState/updateState')
 const cors = require('cors');
 
 const app = express(); // singleton
@@ -21,9 +23,14 @@ app.get('/capitalize-me', function(request, response, next) {
   }
 });
 
-// app.listen(3001, () => {
-//   console.log('App is listening!!!!');
-// });
+app.get('/state', function(request, response, next) {
+  let currentState = getState();
+  response.send(currentState);
+});
 
-// export to the world!
+app.post('/state', function(request, response, next) {
+  let updated = updateState('off')
+  response.send(updated);
+});
+
 module.exports = app;

@@ -19,7 +19,7 @@ async function updateState(state='off') {
 
     try {
       const response = await client.send(command);
-      console.log('SENT WEATHER DATA: ', response);
+      console.log('UPDATE STATE: ', response);
     } catch (err) {
       console.error(err);
     }

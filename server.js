@@ -22,15 +22,16 @@ app.get('/capitalize-me', function(request, response, next) {
   }
 });
 
-app.get('/state', function(request, response, next) {
-  let currentState = getState();
+app.get('/state', async function(request, response, next) {
+  let currentState = await getState();
+  console.log(currentState)
   response.send(currentState);
 });
 
-app.post('/state', function(request, response, next) {
-  let updated = updateState('off')
+app.post('/state', async function(request, response, next) {
+  let updated = await updateState('off')
   if (request.query.state){
-    updated=updateState(request.query.state)
+    updated = await updateState(request.query.state)
   }
   response.send(updated);
 });

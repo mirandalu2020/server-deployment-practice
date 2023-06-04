@@ -22,6 +22,6 @@ jobs:
         aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         application_name: PiControl
         environment_name: PiControl-env
-        version_label: 100
+        version_label: 1000
         region: us-east-1
         deployment_package: deploy.zip
